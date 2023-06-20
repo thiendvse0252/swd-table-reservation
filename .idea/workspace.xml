@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8d50818-7af5-4c1d-9efd-9017db620dfd" name="Changes" comment="" />
+    <list default="true" id="c8d50818-7af5-4c1d-9efd-9017db620dfd" name="Changes" comment="Update controllers" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -21,6 +27,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2RPgkChfPBPucf8FunQzYpt6F4F" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,10 +39,19 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/thanhtra/FPT/EXE/swd",
+    "last_opened_file_path": "C:/Users/thien/Máy tính/SE-ThienDV-Projects/swd-table-reservation",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.swd.cms.controllers" />
+      <recent name="com.swd.cms.dto" />
+      <recent name="com.swd.cms.mapper" />
+      <recent name="com.swd.services" />
+      <recent name="com.swd.repositories" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="SwdApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="swd" />
@@ -53,9 +71,40 @@
       <updated>1687157271345</updated>
       <workItem from="1687157272320" duration="70000" />
     </task>
+    <task id="LOCAL-00001" summary="Update entities">
+      <created>1687269252202</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687269252202</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update controllers">
+      <created>1687269497245</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687269497245</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update entities" />
+    <MESSAGE value="Update controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update controllers" />
   </component>
 </project>
