@@ -4,11 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8d50818-7af5-4c1d-9efd-9017db620dfd" name="Changes" comment="" />
+    <list default="true" id="c8d50818-7af5-4c1d-9efd-9017db620dfd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/dto/ReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/dto/RestaurantDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/dto/TableDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/mapper/ReservationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/mapper/RestaurantMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/mapper/TableMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/entities/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/entities/Restaurant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/entities/Tables.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/entities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/repositories/ReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/repositories/RestaurantRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/repositories/TableRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/services/ReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/services/RestaurantService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/services/TableService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swd/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -21,6 +52,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2RPgkChfPBPucf8FunQzYpt6F4F" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,10 +64,19 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/thanhtra/FPT/EXE/swd",
+    "last_opened_file_path": "C:/Users/thien/Máy tính/SE-ThienDV-Projects/swd-table-reservation",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.swd.cms.dto" />
+      <recent name="com.swd.cms.mapper" />
+      <recent name="com.swd.services" />
+      <recent name="com.swd.repositories" />
+      <recent name="com.swd.entities" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="SwdApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="swd" />
@@ -57,5 +100,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
