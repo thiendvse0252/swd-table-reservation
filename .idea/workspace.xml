@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8d50818-7af5-4c1d-9efd-9017db620dfd" name="Changes" comment="Update config app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +39,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/thien/Máy tính/SE-ThienDV-Projects/swd-table-reservation",
+    "last_opened_file_path": "C:/Users/thien/Máy tính/SE-ThienDV-Projects/swd-table-reservation-main",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -102,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687270019056</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update config app">
+      <created>1687270720268</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687270720268</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
