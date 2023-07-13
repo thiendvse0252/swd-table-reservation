@@ -6,6 +6,7 @@ import com.swd.entities.Tables;
 import com.swd.exception.BadRequestException;
 import com.swd.repositories.TableRepository;
 import com.swd.services.TableService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tables")
+@Tag(name = "Table", description = "Table API")
 public class TableController {
     private final TableRepository tableRepository;
     @Autowired

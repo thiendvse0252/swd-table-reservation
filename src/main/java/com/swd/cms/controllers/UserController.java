@@ -7,6 +7,7 @@ import com.swd.entities.User;
 import com.swd.exception.BadRequestException;
 import com.swd.repositories.UserRepository;
 import com.swd.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@Tag(name = "User", description = "User API")
 public class UserController extends BaseController {
 
     private final UserRepository userRepository;

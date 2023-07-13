@@ -7,6 +7,7 @@ import com.swd.entities.Reservation;
 import com.swd.exception.BadRequestException;
 import com.swd.repositories.ReservationRepository;
 import com.swd.services.ReservationService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reservation")
+@Tag(name = "Reservation", description = "Reservation API")
 public class ReservationController extends BaseController {
 
     private final ReservationRepository reservationRepository;

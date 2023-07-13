@@ -7,6 +7,7 @@ import com.swd.entities.Restaurant;
 import com.swd.exception.BadRequestException;
 import com.swd.repositories.RestaurantRepository;
 import com.swd.services.RestaurantService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/restaurant")
+@Tag(name = "Restaurant", description = "Restaurant API")
 public class RestaurantController extends BaseController {
 
     private final RestaurantRepository restaurantRepository;

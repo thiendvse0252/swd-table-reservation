@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c8d50818-7af5-4c1d-9efd-9017db620dfd" name="Changes" comment="Update config app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/RestaurantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/TableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/TestingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/TestingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swd/cms/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/thien/Máy tính/SE-ThienDV-Projects/swd-table-reservation-main",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/thien/Máy tính/SE-ThienDV-Projects/swd-table-reservation-main&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.swd.cms.controllers" />
@@ -73,6 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1687157271345</updated>
       <workItem from="1687157272320" duration="70000" />
+      <workItem from="1687535797470" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="Update entities">
       <created>1687269252202</created>

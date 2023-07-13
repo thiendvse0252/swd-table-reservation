@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/testing")
+//@RestController
+//@RequestMapping("/testing")
 public class TestingController extends BaseController {
     @Autowired
     private ModelMapper modelMapper;
