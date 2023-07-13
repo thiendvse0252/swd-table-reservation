@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8d50818-7af5-4c1d-9efd-9017db620dfd" name="Changes" comment="Update config app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1687157271345</updated>
       <workItem from="1687157272320" duration="70000" />
-      <workItem from="1689224090476" duration="1679000" />
+      <workItem from="1689224090476" duration="2488000" />
     </task>
     <task id="LOCAL-00001" summary="Update entities">
       <created>1687269252202</created>
