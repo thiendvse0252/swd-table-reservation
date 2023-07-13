@@ -17,8 +17,8 @@ on:
 env:
   REGISTRY: "registry.gitlab.com/nola-mediatech"
   IMAGE_NAME: "swd-table-reservation"
-  NETWORK_NAME: "swd-mysql-springboot-network"
-  MYSQL_CONTAINER_NAME: "swd-mysqldb"
+  NETWORK_NAME: "prm-mysql-springboot-network"
+  MYSQL_CONTAINER_NAME: "prm-mysqldb"
   SPRINGBOOT_CONTAINER_NAME: "swd-springboot"
 
 #3
@@ -71,7 +71,7 @@ jobs:
             # Check if mysql container exists
             if [ -z "$(docker ps -a | grep "$(echo $MYSQL_CONTAINER_NAME)")" ]; 
             then docker run -d \
-            -p 3307:3307 \
+            -p 3306:3306 \
             --restart always \
             --name $(echo $MYSQL_CONTAINER_NAME) \
             --network $(echo $NETWORK_NAME) \
@@ -91,7 +91,7 @@ jobs:
             --name $(echo $SPRINGBOOT_CONTAINER_NAME) \
             --network $(echo $NETWORK_NAME) \
             -e "SPRING_PROFILES_ACTIVE=docker" \
-            -p 8081:8080 \
+            -p 8081:8081 \
             $(echo $REGISTRY)/$(echo $IMAGE_NAME)
       - name: Wait for deployment to finish
         run: sleep 45s
