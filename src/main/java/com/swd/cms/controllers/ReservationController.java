@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reservation")
-@Tag(name = "Reservation", description = "Reservation API")
+@Tag(name = "CMS")
 public class ReservationController extends BaseController {
 
     private final ReservationRepository reservationRepository;
@@ -45,7 +45,6 @@ public class ReservationController extends BaseController {
         Reservation reservation = reservationService.getById(reserveDto.getReservation_id());
         reservation.setPartySize(reserveDto.getPartySize());
         reservation.setResDate(reserveDto.getResDate());
-        reservation.setRestaurant(reserveDto.getRestaurant());
         reservation.setTable(reserveDto.getTable());
         reservation.setUser(reserveDto.getUser());
         Reservation reservationUpdate= reservationService.addReservation(reservation);

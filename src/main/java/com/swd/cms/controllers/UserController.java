@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@Tag(name = "User", description = "User API")
+@Tag(name = "User")
 public class UserController extends BaseController {
 
     private final UserRepository userRepository;

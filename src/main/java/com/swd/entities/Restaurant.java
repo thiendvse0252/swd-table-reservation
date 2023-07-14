@@ -12,8 +12,8 @@ import lombok.Setter;
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "restaurant_id")
-    private long restaurantId;
+    @Column(name = "id")
+    private long id;
 
     @NotNull
     @Column(name = "res_name")
@@ -22,31 +22,4 @@ public class Restaurant {
     @NotNull
     @Column(name = "address")
     private String address;
-
-    public Restaurant() {
-    }
-
-    public long getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(long restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }

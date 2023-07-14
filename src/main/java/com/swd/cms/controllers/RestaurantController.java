@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/restaurant")
-@Tag(name = "Restaurant", description = "Restaurant API")
+@Tag(name = "CMS")
 public class RestaurantController extends BaseController {
 
     private final RestaurantRepository restaurantRepository;

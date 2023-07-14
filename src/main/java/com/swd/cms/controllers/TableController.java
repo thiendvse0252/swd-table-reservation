@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tables")
-@Tag(name = "Table", description = "Table API")
+@Tag(name = "CMS")
 public class TableController {
     private final TableRepository tableRepository;
     @Autowired
