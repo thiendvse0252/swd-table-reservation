@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "user")
 @Getter
@@ -15,18 +17,31 @@ public class User {
     @Column(name = "id")
     private long id;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
+
+    @NotNull
+    @Column(name = "username")
+    private String username;
+
+    @NotNull
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "firstname")
     private String firstName;
 
-    @NotNull
     @Column(name = "lastname")
     private String lastName;
 
-    @NotNull
     @Column(name = "phone")
     private String phone;
 
-    @NotNull
     @Column(name = "email")
     private String email;
 }

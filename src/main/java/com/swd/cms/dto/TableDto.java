@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class TableDto {
-    private Long table_id;
-    private int capacity;
-    private boolean isBooked;
-    private Restaurant restaurant;
+    private Long id;
+    private Integer capacity;
+    private Boolean isBooked;
+    private Long restaurantId;
 }

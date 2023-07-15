@@ -4,6 +4,7 @@ import com.swd.cms.dto.TableDto;
 import com.swd.entities.Tables;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -15,5 +16,6 @@ public interface TableMapper {
     public List<TableDto> fromEntityToTableDtoList(List<Tables> input);
 
     @Named(value = "fromEntityToTableDto")
+    @Mapping(target = "restaurantId", source = "restaurant.id")
     public TableDto fromEntityToTableDto(Tables input);
 }

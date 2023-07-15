@@ -42,11 +42,11 @@ public class ReservationController extends BaseController {
 
     @PutMapping()
     public ReservationDto updateReservation(@Valid @RequestBody ReservationDto reserveDto) {
-        Reservation reservation = reservationService.getById(reserveDto.getReservation_id());
+        Reservation reservation = reservationService.getByUserIdAndTableId(reserveDto.getUserId(), reserveDto.getTableId());
         reservation.setPartySize(reserveDto.getPartySize());
         reservation.setResDate(reserveDto.getResDate());
-        reservation.setTable(reserveDto.getTable());
-        reservation.setUser(reserveDto.getUser());
+//        reservation.setTable(reserveDto.getTable());
+//        reservation.setUser(reserveDto.getUser());
         Reservation reservationUpdate= reservationService.addReservation(reservation);
         ReservationDto reservationDto = modelMapper.map(reservationUpdate, ReservationDto.class);
         return reservationDto;

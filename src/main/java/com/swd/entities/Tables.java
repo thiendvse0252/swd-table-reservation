@@ -13,15 +13,15 @@ public class Tables {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @NotNull
     @Column(name = "isBooked")
-    private boolean isBooked;
+    private Boolean isBooked;
 
     @NotNull
     @Column(name = "capacity")
-    private int capacity;
+    private Integer capacity;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")

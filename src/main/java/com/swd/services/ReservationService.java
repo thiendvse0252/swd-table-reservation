@@ -19,6 +19,9 @@ public class ReservationService {
                 .orElseThrow(() -> new EntityNotFoundException(Reservation.class, "reservation_id", id.toString()));
     }
 
+    public Reservation getByUserIdAndTableId(Long userId, Long tableId) {
+        return reservationRepository.findByUserIdAndTableId(userId, tableId);}
+
     public List<Reservation> getAll(){
         return reservationRepository.findAll();
     }
