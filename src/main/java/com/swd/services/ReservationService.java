@@ -1,6 +1,7 @@
 package com.swd.services;
 
 
+import com.swd.constraints.EReservationStatus;
 import com.swd.entities.Reservation;
 import com.swd.exception.EntityNotFoundException;
 import com.swd.repositories.ReservationRepository;
@@ -36,5 +37,14 @@ public class ReservationService {
 
     public void deleteReservationById(Long id) {
         reservationRepository.deleteById(id);
+    }
+
+    public Boolean isValidStatus (String status) {
+        for(EReservationStatus e : EReservationStatus.values()) {
+            if(e.name().equals(status)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

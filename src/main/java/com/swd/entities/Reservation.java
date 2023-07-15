@@ -1,5 +1,6 @@
 package com.swd.entities;
 
+import com.swd.constraints.EReservationStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,6 +37,10 @@ public class Reservation {
 
     @Column(name = "party_size")
     private int partySize;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private EReservationStatus status;
 
 }
 

@@ -1,9 +1,12 @@
 package com.swd.app.controller;
 
 import com.swd.app.reqDto.BookReservationDto;
+import com.swd.app.reqDto.ReservationUpdateDto;
 import com.swd.cms.mapper.ReservationMapper;
 import com.swd.common.BaseController;
+import com.swd.constraints.EReservationStatus;
 import com.swd.entities.Reservation;
+import com.swd.entities.Tables;
 import com.swd.exception.BadRequestException;
 import com.swd.model.dto.ApiMessageDto;
 import com.swd.services.ReservationService;
@@ -31,31 +34,48 @@ public class AppReservationController extends BaseController {
     private ReservationMapper mapper;
 
     @PostMapping("/book")
-    public ApiMessageDto<Object> bookTable(@Valid @RequestBody BookReservationDto bookReservationDto){
+    public ApiMessageDto<Object> bookTable(@Valid @RequestBody BookReservationDto bookReservationDto) {
         // Check if table exists
-        if(!tableService.existsById(bookReservationDto.getTableId())) {
+        if (!tableService.existsById(bookReservationDto.getTableId())) {
             throw new BadRequestException("Table does not exist");
         }
         // Check if user exists
-        if(!reservationService.existsById(bookReservationDto.getUserId())) {
+        if (!reservationService.existsById(bookReservationDto.getUserId())) {
             throw new BadRequestException("User does not exist");
         }
         // Check if table is booked
-        if(tableService.isBooked(bookReservationDto.getTableId())){
+        if (tableService.isBooked(bookReservationDto.getTableId())) {
             throw new BadRequestException("Table is already booked");
+        }
+        // Check if start time is before end time
+        if (bookReservationDto.getStartTime().isAfter(bookReservationDto.getEndTime())) {
+            throw new BadRequestException("Start time is after end time");
+        }
+        Tables table = tableService.getById(bookReservationDto.getTableId());
+        // Check if party size is greater than table capacity
+        if (bookReservationDto.getPartySize() > table.getCapacity()) {
+            throw new BadRequestException("Party size is greater than table capacity");
         }
         Reservation reservation = modelMapper.map(bookReservationDto, Reservation.class);
         // Set table to booked
-        reservation.setTable(tableService.getById(bookReservationDto.getTableId()));
-        // Check if start time is before end time
-        if(reservation.getStartTime().isAfter(reservation.getEndTime())){
-            throw new BadRequestException("Start time is after end time");
-        }
-        // Check if party size is greater than table capacity
-        if(reservation.getPartySize() > reservation.getTable().getCapacity()){
-            throw new BadRequestException("Party size is greater than table capacity");
-        }
+        reservation.setTable(table);
+        reservation.setStatus(EReservationStatus.PENDING);
         Reservation savedReservation = reservationService.addReservation(reservation);
-        return makeResponse(true,mapper.fromEntityToReservationDto(savedReservation), "Reservation added successfully");
+        return makeResponse(true, mapper.fromEntityToReservationDto(savedReservation), "Reservation added successfully");
+    }
+
+    // Update reservation status
+    @PostMapping("/update")
+    ApiMessageDto<Object> updateReservationStatus(@Valid @RequestBody ReservationUpdateDto reservationUpdateDto) {
+        Reservation reservation = reservationService.getByUserIdAndTableId(reservationUpdateDto.getUserId(), reservationUpdateDto.getTableId());
+        if (reservation == null) {
+            throw new BadRequestException("Reservation does not exist");
+        }
+        if (reservationService.isValidStatus(reservationUpdateDto.getStatus())) {
+            throw new BadRequestException("Invalid status");
+        }
+        reservation.setStatus(EReservationStatus.valueOf(reservationUpdateDto.getStatus()));
+        Reservation updatedReservation = reservationService.addReservation(reservation);
+        return makeResponse(true, mapper.fromEntityToReservationDto(updatedReservation), "Reservation updated successfully");
     }
 }
