@@ -9,6 +9,7 @@ import com.swd.services.TableService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class AppTableController extends BaseController {
     @Autowired
     private TableMapper mapper;
 
-    @PostMapping("/all")
+    @GetMapping("/all")
     public ApiMessageDto<Object> getAll(){
         List<Tables> tables = tableService.getAll();
         List<TableDto> tableDtos = mapper.fromEntityToTableDtoList(tables);
