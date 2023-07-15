@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tables")
-@Tag(name = "Table", description = "Table API")
+@Tag(name = "CMS")
 public class TableController {
     private final TableRepository tableRepository;
     @Autowired
@@ -54,10 +54,9 @@ public class TableController {
 
     @PutMapping()
     public TableDto updateTable(@Valid @RequestBody TableDto tableDto) {
-        Tables tables = tableService.getById(tableDto.getTable_id());
-        tables.setBooked(tableDto.isBooked());
+        Tables tables = tableService.getById(tableDto.getId());
+        tables.setIsBooked(tableDto.getIsBooked());
         tables.setCapacity(tableDto.getCapacity());
-        tables.setRestaurant(tableDto.getRestaurant());
         Tables reservationUpdate= tableService.saveTable(tables);
         TableDto reservationDto = modelMapper.map(reservationUpdate, TableDto.class);
         return reservationDto;

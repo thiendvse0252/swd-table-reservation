@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 
 @Data
 public class ReservationDto {
-    private long reservation_id;
+//    private Long id;
     private LocalDateTime resDate;
-    private int partySize;
-    private User user;
-    private Tables table;
+    private Integer partySize;
+    private Long userId;
+    private Long tableId;
     private Restaurant restaurant;
 }

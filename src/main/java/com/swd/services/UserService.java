@@ -18,14 +18,17 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException(User.class, "userId", id.toString()));
     }
 
-    public User saveTable(User user) {
-        return userRepository.save(user);
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     public Boolean existsById(Long id) {
         return userRepository.existsById(id);
     }
 
+    public Boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }

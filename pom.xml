@@ -120,5 +120,14 @@
         <profile>
             <id>docker</id>
         </profile>
+        <profile>
+            <id>local</id>
+            <properties>
+                <activatedProperties>local</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
     </profiles>
 </project>

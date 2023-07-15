@@ -22,6 +22,13 @@ public class TableService {
         return tableRepository.findAll();
     }
 
+    public Boolean isBooked(Long id) {
+        Tables table = tableRepository.findById(id).orElse(null);
+        if (table == null) {
+            throw new EntityNotFoundException(Tables.class, "id", id.toString());
+        }
+        return table.getIsBooked();
+    }
     public Tables saveTable(Tables table) {
         return tableRepository.save(table);
     }
