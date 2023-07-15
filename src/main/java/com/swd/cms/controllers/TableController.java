@@ -55,7 +55,7 @@ public class TableController {
     @PutMapping()
     public TableDto updateTable(@Valid @RequestBody TableDto tableDto) {
         Tables tables = tableService.getById(tableDto.getId());
-        tables.setIsBooked(tableDto.getIsBooked());
+//        tables.setIsBooked(tableDto.getIsBooked());
         tables.setCapacity(tableDto.getCapacity());
         Tables reservationUpdate= tableService.saveTable(tables);
         TableDto reservationDto = modelMapper.map(reservationUpdate, TableDto.class);

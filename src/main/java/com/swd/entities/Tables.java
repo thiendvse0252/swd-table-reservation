@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "tables")
 @Getter
@@ -15,9 +17,8 @@ public class Tables {
     @Column(name = "id")
     private Long id;
 
-    @NotNull
-    @Column(name = "isBooked")
-    private Boolean isBooked;
+    @Column(name="last_checkout")
+    private Instant lastCheckout;
 
     @NotNull
     @Column(name = "capacity")

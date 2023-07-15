@@ -6,6 +6,7 @@ import com.swd.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -14,11 +15,10 @@ public class TableService {
     private TableRepository tableRepository;
 
     public Tables getById(Long id) {
-        return tableRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(Tables.class, "id", id.toString()));
+        return tableRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(Tables.class, "id", id.toString()));
     }
 
-    public List<Tables> getAll(){
+    public List<Tables> getAll() {
         return tableRepository.findAll();
     }
 
@@ -27,8 +27,10 @@ public class TableService {
         if (table == null) {
             throw new EntityNotFoundException(Tables.class, "id", id.toString());
         }
-        return table.getIsBooked();
+        // Check if now is after lastCheckout
+        return table.getLastCheckout() == null || !table.getLastCheckout().isAfter(Instant.now());
     }
+
     public Tables saveTable(Tables table) {
         return tableRepository.save(table);
     }
