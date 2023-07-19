@@ -28,7 +28,10 @@ public class TableService {
             throw new EntityNotFoundException(Tables.class, "id", id.toString());
         }
         // Check if now is after lastCheckout
-        return table.getLastCheckout() == null || !table.getLastCheckout().isAfter(Instant.now());
+        if(table.getLastCheckout() == null) {
+            return false;
+        }
+        return !table.getLastCheckout().isAfter(Instant.now());
     }
 
     public Tables saveTable(Tables table) {
