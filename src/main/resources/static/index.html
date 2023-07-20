@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Make your Reservation</h1>
+<nav>
+    <ul>
+        <li><a href="table.html">View Available Tables</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="restaurant.html">Restaurant</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="booking_history.html">History</a></li>
+        <!-- Add more navigation links as needed -->
+    </ul>
+</nav>
+<form id="reservationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" required>
+
+    <label for="time">Time:</label>
+    <input type="time" id="time" required>
+
+    <label for="partySize">Party Size:</label>
+    <input type="number" id="partySize" min="1" required>
+
+    <input type="submit" value="Request Reservation">
+</form>
+
+<div id="reservationResult"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
