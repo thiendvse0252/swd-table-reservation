@@ -8,7 +8,7 @@ import com.swd.constraints.EReservationStatus;
 import com.swd.entities.Reservation;
 import com.swd.entities.Tables;
 import com.swd.entities.User;
-import com.swd.entities.UserTableKey;
+import com.swd.entities.ReservationId;
 import com.swd.exception.BadRequestException;
 import com.swd.model.dto.ApiMessageDto;
 import com.swd.services.ReservationService;
@@ -64,12 +64,12 @@ public class AppReservationController extends BaseController {
         if (bookReservationDto.getPartySize() > table.getCapacity()) {
             throw new BadRequestException("Party size is greater than table capacity");
         }
-        UserTableKey userTableKey = new UserTableKey();
-        userTableKey.setUserId(bookReservationDto.getUserId());
-        userTableKey.setTableId(bookReservationDto.getTableId());
+        ReservationId reservationId = new ReservationId();
+        reservationId.setUserId(bookReservationDto.getUserId());
+        reservationId.setTableId(bookReservationDto.getTableId());
         Reservation reservation = modelMapper.map(bookReservationDto, Reservation.class);
         // Set table to booked
-        reservation.setId(userTableKey);
+        reservation.setId(reservationId);
         reservation.setTable(table);
         reservation.setUser(user);
         reservation.setStatus(EReservationStatus.PENDING);

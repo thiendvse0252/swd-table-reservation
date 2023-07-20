@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 public class Reservation {
     @EmbeddedId
-    private UserTableKey id;
+    private ReservationId id;
 
     @ManyToOne
     @MapsId("userId")
