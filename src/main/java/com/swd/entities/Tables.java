@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tables")
@@ -17,12 +18,11 @@ public class Tables {
     @Column(name = "id")
     private Long id;
 
-    @Column(name="last_checkout")
-    private Instant lastCheckout;
+    @Column(nullable = false)
+    private int capacity;
 
-    @NotNull
-    @Column(name = "capacity")
-    private Integer capacity;
+    @Column(nullable = false)
+    private String type;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")

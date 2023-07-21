@@ -1,5 +1,6 @@
 package com.swd.app.controller;
 
+import com.swd.app.reqDto.AvailableTableAtTimeDto;
 import com.swd.cms.dto.TableDto;
 import com.swd.cms.mapper.TableMapper;
 import com.swd.common.BaseController;
@@ -9,11 +10,11 @@ import com.swd.services.TableService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,5 +35,14 @@ public class AppTableController extends BaseController {
         List<Tables> tables = tableService.getAll();
         List<TableDto> tableDtos = mapper.fromEntityToTableDtoList(tables);
         return makeResponse(true, tableDtos, "Get all table successful!");
+    }
+    // Get all available tables at a specific time
+    @PostMapping("/available")
+    public ApiMessageDto<Object> getAvailableTables(@RequestBody AvailableTableAtTimeDto availableTableAtTimeDto) {
+        Date startTime = availableTableAtTimeDto.getTime();
+        // End time is 2 hours after start time
+        Date endTime = Date.from(Instant.ofEpochMilli(startTime.getTime()).plusSeconds(7200));
+        List<Tables> tables = tableService.getAvailableTables(startTime, endTime);
+        return makeResponse(true, null, "Get all available tables successful!");
     }
 }

@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/app/reservation")
 @Tag(name = "App")
@@ -43,20 +45,20 @@ public class AppReservationController extends BaseController {
     @PostMapping("/book")
     public ApiMessageDto<Object> bookTable(@Valid @RequestBody BookReservationDto bookReservationDto) {
         // Check if table exists
-        if (!tableService.existsById(bookReservationDto.getTableId())) {
+        if (Boolean.FALSE.equals(tableService.existsById(bookReservationDto.getTableId()))) {
             throw new BadRequestException("Table does not exist");
         }
         // Check if user exists
-        if (!userService.existsById(bookReservationDto.getUserId())) {
+        if (Boolean.FALSE.equals(userService.existsById(bookReservationDto.getUserId()))) {
             throw new BadRequestException("User does not exist");
         }
         User user = userService.getById(bookReservationDto.getUserId());
         // Check if table is booked
-        if (tableService.isBooked(bookReservationDto.getTableId())) {
+        if (Boolean.TRUE.equals(tableService.isBooked(bookReservationDto.getTableId()))) {
             throw new BadRequestException("Table is already booked");
         }
         // Check if start time is before end time
-        if (bookReservationDto.getStartTime().isAfter(bookReservationDto.getEndTime())) {
+        if (bookReservationDto.getStartTime().after(bookReservationDto.getEndTime())) {
             throw new BadRequestException("Start time is after end time");
         }
         Tables table = tableService.getById(bookReservationDto.getTableId());
@@ -73,8 +75,7 @@ public class AppReservationController extends BaseController {
         reservation.setTable(table);
         reservation.setUser(user);
         reservation.setStatus(EReservationStatus.PENDING);
-        table.setLastCheckout(bookReservationDto.getEndTime());
-        tableService.saveTable(table);
+        reservation.setReservationDate(new Date());
         Reservation savedReservation = reservationService.addReservation(reservation);
         return makeResponse(true, mapper.fromEntityToBookReservationDto(savedReservation), "Reservation added successfully");
     }

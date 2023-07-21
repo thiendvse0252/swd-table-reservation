@@ -4,9 +4,11 @@ import com.swd.constraints.EReservationStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
@@ -26,14 +28,19 @@ public class Reservation {
     @JoinColumn(name = "table_id")
     private Tables table;
 
-    @Column(name = "res_date")
-    private LocalDateTime resDate;
 
+    @Column(name = "reservation_date")
+    private Date reservationDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "hh:mm dd/MM/yyyy")
     @Column(name = "start_time")
-    private Instant startTime;
+    private Date startTime;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "hh:mm dd/MM/yyyy")
     @Column(name = "end_time")
-    private Instant endTime;
+    private Date endTime;
 
     @Column(name = "party_size")
     private int partySize;

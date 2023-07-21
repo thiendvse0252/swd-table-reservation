@@ -44,7 +44,7 @@ public class ReservationController extends BaseController {
     public ReservationDto updateReservation(@Valid @RequestBody ReservationDto reserveDto) {
         Reservation reservation = reservationService.getByUserIdAndTableId(reserveDto.getUserId(), reserveDto.getTableId());
         reservation.setPartySize(reserveDto.getPartySize());
-        reservation.setResDate(reserveDto.getResDate());
+        reservation.setReservationDate(reserveDto.getReservationDate());
 //        reservation.setTable(reserveDto.getTable());
 //        reservation.setUser(reserveDto.getUser());
         Reservation reservationUpdate= reservationService.addReservation(reservation);

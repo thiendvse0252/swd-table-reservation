@@ -44,8 +44,6 @@ public class UserController extends BaseController {
     public UserDto updateUser(@Valid @RequestBody UserDto userDto) {
         User users = userService.getById(userDto.getId());
         users.setEmail(userDto.getEmail());
-        users.setFirstName(userDto.getFirstName());
-        users.setLastName(userDto.getLastName());
         users.setPhone(userDto.getPhone());
         User userUpdate= userService.addUser(users);
         UserDto usersDto = modelMapper.map(userUpdate, UserDto.class);

@@ -20,11 +20,5 @@ public interface ReservationMapper {
     public ReservationDto fromEntityToReservationDto(Reservation input);
 
     @Named(value = "fromEntityToBookReservationDto")
-    @Mapping(target = "tableId", source = "table.id")
-    @Mapping(target = "userId", source = "user.id")
-    @Mapping(target = "startTime", source = "startTime")
-    @Mapping(target = "endTime", source = "endTime")
-    @Mapping(target = "partySize", source = "partySize")
-
     public BookReservationDto fromEntityToBookReservationDto(Reservation input);
 }
