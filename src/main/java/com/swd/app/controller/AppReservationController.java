@@ -10,14 +10,17 @@ import com.swd.entities.Tables;
 import com.swd.entities.User;
 import com.swd.exception.BadRequestException;
 import com.swd.model.dto.ApiMessageDto;
-import com.swd.services.ReservationService;
-import com.swd.services.TableService;
-import com.swd.services.UserService;
+import com.swd.security.CurrentUser;
+import com.swd.services.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecuritySchemes;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
@@ -42,15 +45,21 @@ public class AppReservationController extends BaseController {
     @Transactional
     @PostMapping("/book")
     public ApiMessageDto<Object> bookTable(@Valid @RequestBody BookReservationDto bookReservationDto) {
+        // Check if user is logged in
+        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (userDetails == null) {
+            throw new BadRequestException("User is not logged in");
+        }
+        Long userId = userDetails.getId();
         // Check if table exists
         if (Boolean.FALSE.equals(tableService.existsById(bookReservationDto.getTableId()))) {
             throw new BadRequestException("Table does not exist");
         }
         // Check if user exists
-        if (Boolean.FALSE.equals(userService.existsById(bookReservationDto.getUserId()))) {
+        if (Boolean.FALSE.equals(userService.existsById(userId))) {
             throw new BadRequestException("User does not exist");
         }
-        User user = userService.getById(bookReservationDto.getUserId());
+        User user = userService.getById(userId);
         // Check if table is booked
         if (Boolean.TRUE.equals(tableService.isBooked(bookReservationDto.getTableId()))) {
             throw new BadRequestException("Table is already booked");

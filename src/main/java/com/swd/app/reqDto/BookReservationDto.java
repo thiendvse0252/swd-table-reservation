@@ -11,8 +11,6 @@ public class BookReservationDto {
     @NotNull
     private Long tableId;
     @NotNull
-    private Long userId;
-    @NotNull
     private Date startTime;
     @NotNull
     private Date endTime;
