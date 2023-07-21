@@ -10,17 +10,13 @@ import com.swd.entities.Tables;
 import com.swd.entities.User;
 import com.swd.exception.BadRequestException;
 import com.swd.model.dto.ApiMessageDto;
-import com.swd.security.CurrentUser;
 import com.swd.services.*;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecuritySchemes;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
