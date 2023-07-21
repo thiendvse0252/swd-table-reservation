@@ -17,6 +17,8 @@ public interface ReservationMapper {
     public List<ReservationDto> fromEntityToReservationDtoList(List<Reservation> input);
 
     @Named(value = "fromEntityToReservationDto")
+    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "tableId", source = "table.id")
     public ReservationDto fromEntityToReservationDto(Reservation input);
 
     @Named(value = "fromEntityToBookReservationDto")

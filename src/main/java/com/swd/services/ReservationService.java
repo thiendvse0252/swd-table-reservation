@@ -8,6 +8,7 @@ import com.swd.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,5 +47,13 @@ public class ReservationService {
             }
         }
         return false;
+    }
+
+    public List<Reservation> getAllAcceptedReservationsInTime(Date startTime, Date endTime) {
+        return reservationRepository.findAllApprovedReservationsInTime( startTime, endTime);
+    }
+
+    public List<Reservation> getAllByDate(Date date) {
+        return reservationRepository.findAllByDate(date);
     }
 }

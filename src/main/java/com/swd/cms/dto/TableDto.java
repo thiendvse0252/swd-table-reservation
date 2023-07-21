@@ -7,6 +7,6 @@ import lombok.Data;
 public class TableDto {
     private Long id;
     private Integer capacity;
-    private Boolean isBooked;
+    private String type;
     private Long restaurantId;
 }

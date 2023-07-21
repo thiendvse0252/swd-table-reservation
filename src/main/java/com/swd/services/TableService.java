@@ -48,17 +48,4 @@ public class TableService {
         tableRepository.deleteById(id);
     }
 
-    public List<Tables> getAvailableTables(Date startTime, Date endTime) {
-        // Find all tables that are not booked at a specific time
-        // 1. Get all tables
-        // 2. Get all reservations that are booked at a specific time
-        // 3. Get all tables that are not in the list of tables that are booked at a specific time
-
-        // Convert time and date to Instant
-        List<Tables> tables = tableRepository.findAll();
-
-        List<Reservation> reservations = reservationRepository.findAllReservationsInTime(startTime, endTime);
-
-        return tables;
-    }
 }

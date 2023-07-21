@@ -8,7 +8,6 @@ import com.swd.constraints.EReservationStatus;
 import com.swd.entities.Reservation;
 import com.swd.entities.Tables;
 import com.swd.entities.User;
-import com.swd.entities.ReservationId;
 import com.swd.exception.BadRequestException;
 import com.swd.model.dto.ApiMessageDto;
 import com.swd.services.ReservationService;
@@ -19,11 +18,10 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
@@ -66,12 +64,8 @@ public class AppReservationController extends BaseController {
         if (bookReservationDto.getPartySize() > table.getCapacity()) {
             throw new BadRequestException("Party size is greater than table capacity");
         }
-        ReservationId reservationId = new ReservationId();
-        reservationId.setUserId(bookReservationDto.getUserId());
-        reservationId.setTableId(bookReservationDto.getTableId());
         Reservation reservation = modelMapper.map(bookReservationDto, Reservation.class);
         // Set table to booked
-        reservation.setId(reservationId);
         reservation.setTable(table);
         reservation.setUser(user);
         reservation.setStatus(EReservationStatus.PENDING);
@@ -87,11 +81,24 @@ public class AppReservationController extends BaseController {
         if (reservation == null) {
             throw new BadRequestException("Reservation does not exist");
         }
-        if (reservationService.isValidStatus(reservationUpdateDto.getStatus())) {
+        if (Boolean.TRUE.equals(reservationService.isValidStatus(reservationUpdateDto.getStatus()))) {
             throw new BadRequestException("Invalid status");
         }
         reservation.setStatus(EReservationStatus.valueOf(reservationUpdateDto.getStatus()));
         Reservation updatedReservation = reservationService.addReservation(reservation);
         return makeResponse(true, mapper.fromEntityToReservationDto(updatedReservation), "Reservation updated successfully");
+    }
+
+    @GetMapping("/get-by-date")
+    ApiMessageDto<Object> getReservationByDate(@RequestParam String dateStr) {
+        String dateFormat = "dd-MM-yyyy";
+        DateFormat formatter = new SimpleDateFormat(dateFormat);
+        try {
+            Date date = formatter.parse(dateStr);
+            return makeResponse(true, mapper.fromEntityToReservationDtoList(reservationService.getAllByDate(date)), "Reservation retrieved successfully");
+        } catch (Exception e) {
+            throw new BadRequestException("Invalid date format");
+        }
+
     }
 }

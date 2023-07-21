@@ -1,15 +1,22 @@
 package com.swd.cms.dto;
 
+import com.swd.constraints.EReservationStatus;
 import com.swd.entities.Restaurant;
+import com.swd.entities.Tables;
+import com.swd.entities.User;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
 public class ReservationDto {
-    private Date reservationDate;
-    private Integer partySize;
+    private Long id;
     private Long userId;
     private Long tableId;
-    private Restaurant restaurant;
+    private Date reservationDate;
+    private Date startTime;
+    private Date endTime;
+    private int partySize;
+    private EReservationStatus status;
 }
