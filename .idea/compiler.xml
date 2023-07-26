@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="swd" />
       </profile>
       <profile name="Annotation profile for swd" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -18,13 +17,14 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
         </processorPath>
+        <module name="swd" />
         <module name="swd-table-reservation" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="swd" options="-parameters" />
+      <module name="swd" options="-parameters -Amapstruct.defaultComponentModel=spring" />
       <module name="swd-table-reservation" options="-parameters -Amapstruct.defaultComponentModel=spring" />
     </option>
   </component>

@@ -6,7 +6,9 @@ import com.swd.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -18,14 +20,17 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException(User.class, "userId", id.toString()));
     }
 
-    public User saveTable(User user) {
-        return userRepository.save(user);
+    public Optional<User> getByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     public Boolean existsById(Long id) {
         return userRepository.existsById(id);
     }
 
+    public Boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }

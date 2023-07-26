@@ -1,9 +1,11 @@
 package com.swd.cms.mapper;
 
+import com.swd.app.reqDto.BookReservationDto;
 import com.swd.cms.dto.ReservationDto;
 import com.swd.entities.Reservation;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -15,5 +17,10 @@ public interface ReservationMapper {
     public List<ReservationDto> fromEntityToReservationDtoList(List<Reservation> input);
 
     @Named(value = "fromEntityToReservationDto")
+    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "tableId", source = "table.id")
     public ReservationDto fromEntityToReservationDto(Reservation input);
+
+    @Named(value = "fromEntityToBookReservationDto")
+    public BookReservationDto fromEntityToBookReservationDto(Reservation input);
 }

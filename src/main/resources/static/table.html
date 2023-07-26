@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Available Tables</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<h1>Available Tables</h1>
+<nav>
+  <ul>
+    <li><a href="index.html">Make Reservation</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="restaurant.html">Restaurant</a></li>
+    <li><a href="booking.html">Booking History</a></li>
+    <li><a href="pending_booking.html">Pending</a></li>
+    <!-- Add more navigation links as needed -->
+  </ul>
+</nav>
+<div id="table-container"></div>
+<script>
+    // Function to fetch and display table data
+    function displayTables() {
+      // Make an API request to fetch the table data
+      fetch('/tables')
+        .then(response => response.json())
+        .then(data => {
+          const tableContainer = document.getElementById('table-container');
+          if (data && data.length > 0) {
+            // Create a table element
+            const table = document.createElement('table');
+            table.classList.add('table');
+
+            // Create the table header row
+            const headerRow = document.createElement('tr');
+            // Add table header cells
+            const headers = ['Table ID', 'Capacity', 'Is Booked', 'Restaurant ID'];
+            headers.forEach(headerText => {
+              const headerCell = document.createElement('th');
+              headerCell.textContent = headerText;
+              headerRow.appendChild(headerCell);
+            });
+            table.appendChild(headerRow);
+
+            // Create table body rows
+            data.forEach(tableData => {
+              const row = document.createElement('tr');
+              const tableIdCell = document.createElement('td');
+              tableIdCell.textContent = tableData.table_id;
+              const capacityCell = document.createElement('td');
+              capacityCell.textContent = tableData.capacity;
+              const isBookedCell = document.createElement('td');
+              isBookedCell.textContent = tableData.isBooked ? '0' : '1';
+              const restaurantIdCell = document.createElement('td');
+              restaurantIdCell.textContent = tableData.restaurant.restaurantId;
+
+              row.appendChild(tableIdCell);
+              row.appendChild(capacityCell);
+              row.appendChild(isBookedCell);
+              row.appendChild(restaurantIdCell);
+
+              // Append the row to the table body
+              table.appendChild(row);
+            });
+
+            // Append the table to the container
+            tableContainer.appendChild(table);
+          } else {
+            // Display a message if there is no table data
+            tableContainer.textContent = 'No tables available.';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching table data:', error);
+          const tableContainer = document.getElementById('table-container');
+          tableContainer.textContent = 'Error fetching table data.';
+        });
+    }
+    displayTables();
+  </script>
+
+</body>
+</html>

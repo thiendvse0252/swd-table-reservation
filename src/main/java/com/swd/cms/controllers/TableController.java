@@ -6,6 +6,7 @@ import com.swd.entities.Tables;
 import com.swd.exception.BadRequestException;
 import com.swd.repositories.TableRepository;
 import com.swd.services.TableService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tables")
+@Tag(name = "CMS")
 public class TableController {
     private final TableRepository tableRepository;
     @Autowired
@@ -52,10 +54,9 @@ public class TableController {
 
     @PutMapping()
     public TableDto updateTable(@Valid @RequestBody TableDto tableDto) {
-        Tables tables = tableService.getById(tableDto.getTable_id());
-        tables.setBooked(tableDto.isBooked());
+        Tables tables = tableService.getById(tableDto.getId());
+//        tables.setIsBooked(tableDto.getIsBooked());
         tables.setCapacity(tableDto.getCapacity());
-        tables.setRestaurant(tableDto.getRestaurant());
         Tables reservationUpdate= tableService.saveTable(tables);
         TableDto reservationDto = modelMapper.map(reservationUpdate, TableDto.class);
         return reservationDto;
