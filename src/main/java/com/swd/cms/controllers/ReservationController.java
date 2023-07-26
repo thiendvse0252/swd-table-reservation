@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reservation")
-@Tag(name = "Reservation", description = "Reservation API")
+@Tag(name = "CMS")
 public class ReservationController extends BaseController {
 
     private final ReservationRepository reservationRepository;
@@ -42,12 +42,11 @@ public class ReservationController extends BaseController {
 
     @PutMapping()
     public ReservationDto updateReservation(@Valid @RequestBody ReservationDto reserveDto) {
-        Reservation reservation = reservationService.getById(reserveDto.getReservation_id());
+        Reservation reservation = reservationService.getByUserIdAndTableId(reserveDto.getUserId(), reserveDto.getTableId());
         reservation.setPartySize(reserveDto.getPartySize());
-        reservation.setResDate(reserveDto.getResDate());
-        reservation.setRestaurant(reserveDto.getRestaurant());
-        reservation.setTable(reserveDto.getTable());
-        reservation.setUser(reserveDto.getUser());
+        reservation.setReservationDate(reserveDto.getReservationDate());
+//        reservation.setTable(reserveDto.getTable());
+//        reservation.setUser(reserveDto.getUser());
         Reservation reservationUpdate= reservationService.addReservation(reservation);
         ReservationDto reservationDto = modelMapper.map(reservationUpdate, ReservationDto.class);
         return reservationDto;

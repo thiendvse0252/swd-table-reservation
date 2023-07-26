@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@Tag(name = "User", description = "User API")
+@Tag(name = "CMS")
 public class UserController extends BaseController {
 
     private final UserRepository userRepository;
@@ -42,10 +42,8 @@ public class UserController extends BaseController {
 
     @PutMapping()
     public UserDto updateUser(@Valid @RequestBody UserDto userDto) {
-        User users = userService.getById(userDto.getUserId());
+        User users = userService.getById(userDto.getId());
         users.setEmail(userDto.getEmail());
-        users.setFirstName(userDto.getFirstName());
-        users.setLastName(userDto.getLastName());
         users.setPhone(userDto.getPhone());
         User userUpdate= userService.addUser(users);
         UserDto usersDto = modelMapper.map(userUpdate, UserDto.class);

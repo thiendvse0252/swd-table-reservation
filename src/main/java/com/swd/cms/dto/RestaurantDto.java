@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class RestaurantDto {
-    private long restaurantId;
+    private Long Id;
     private String name;
     private String address;
 }

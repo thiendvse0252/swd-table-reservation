@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/restaurant")
-@Tag(name = "Restaurant", description = "Restaurant API")
+@Tag(name = "CMS")
 public class RestaurantController extends BaseController {
 
     private final RestaurantRepository restaurantRepository;
@@ -42,7 +42,7 @@ public class RestaurantController extends BaseController {
 
     @PutMapping()
     public RestaurantDto updateRestaurant(@Valid @RequestBody RestaurantDto resDto) {
-        Restaurant restaurant = restaurantService.getById(resDto.getRestaurantId());
+        Restaurant restaurant = restaurantService.getById(resDto.getId());
         restaurant.setName(resDto.getName());
         restaurant.setAddress(resDto.getAddress());
         Restaurant resUpdate= restaurantService.addRestaurant(restaurant);

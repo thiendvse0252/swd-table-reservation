@@ -1,12 +1,14 @@
 package com.swd.services;
 
 
+import com.swd.constraints.EReservationStatus;
 import com.swd.entities.Reservation;
 import com.swd.exception.EntityNotFoundException;
 import com.swd.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,6 +20,9 @@ public class ReservationService {
         return reservationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(Reservation.class, "reservation_id", id.toString()));
     }
+
+    public Reservation getByUserIdAndTableId(Long userId, Long tableId) {
+        return reservationRepository.findByUserIdAndTableId(userId, tableId);}
 
     public List<Reservation> getAll(){
         return reservationRepository.findAll();
@@ -33,5 +38,22 @@ public class ReservationService {
 
     public void deleteReservationById(Long id) {
         reservationRepository.deleteById(id);
+    }
+
+    public Boolean isValidStatus (String status) {
+        for(EReservationStatus e : EReservationStatus.values()) {
+            if(e.name().equals(status)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<Reservation> getAllAcceptedReservationsInTime(Date startTime, Date endTime) {
+        return reservationRepository.findAllApprovedReservationsInTime( startTime, endTime);
+    }
+
+    public List<Reservation> getAllByDate(Date date) {
+        return reservationRepository.findAllByDate(date);
     }
 }
